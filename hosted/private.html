@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Private Page</title>
+<script>
+    window.localStorage.setItem('employee_name', 'Fizz Buzzer');
+    window.localStorage.setItem('employee_number', '987654321');
+    fetch(window.location.href, {
+        method: "post",
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            identifier: 'S239-0HQP',
+            action: 'toggleOption'
+        })
+    })
+    .then((response)=>response.json()).then(console.log);
+</script>
+<style>
+body {
+    max-width: 650px;
+    margin: 40px auto;
+    padding: 0 10px;
+    font: 18px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    color:#444
+}
+h1, h2, h3 { line-height:1.2 }
+</style>
+</head>
+<body>
+<h1>This is a private page</h1>    
+<section>
+    <p>This page simulates having on this domain some private data that is stored in a cookie and local storage (a token, an employee name and number). Since this domain also hosts a service that reflects a parameter sent by a POST request, it's possible to execute XSS on this domain in attempt to exfiltrate this data. Check the dev tools on this page to see a POST request in the network tab and the data in storage.</p>
+    <p>For example, an attacker can create a form like this one: <a href="http://127.0.0.1:1337" target="_blank">http://127.0.0.1:1337</a><br>
+    This can be leveraged with some social engineering to trick a user of this domain to answer this form. Submitting it takes the user from the attacker's page to this domain in which they have private data. Injecting Javascript in this context, allows the attacker to access local storage and cookies that are not HTTP-only. This data can then be sent to the attacker's own server.</p>
+    </p>
+    <p>Click the link above to try it for yourself. Notice what happens when you submit the form. You are taken to a different domain where the XSS replaces the normal JSON response with a page that confirms your submission. From the point of view of an unsuspecting victim, everything is normal. However, you can check the log from the servers process showing the data that has been sent to the attacker.</p>
+</section>
+</body>
+</html>
