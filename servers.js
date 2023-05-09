@@ -51,6 +51,7 @@ function respondWith404(response){
     response.end('404');
 }
 function respondWithPrivatePage(response){
+    //WARNING: cookie should be HTTP-only
     response.setHeader('Set-Cookie', ['token=2h0r590rphds8hs30f0suy']);
     ok(response, hosted_files['private.html']);
 }
