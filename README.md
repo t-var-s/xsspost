@@ -3,3 +3,5 @@
 
 Simply run `node servers.js` and follow what's described.
 The project has no dependencies.
+
+I've also written an article about this in my blog at [viewfromtheweb.com](https://world.hey.com/ricardo.tavares/xss-in-json-post-requests-demo-included-4f2fbbe1) 
